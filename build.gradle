@@ -1,0 +1,39 @@
+buildscript {
+    repositories.mavenCentral()
+}
+
+plugins {
+    id 'nebula.kotlin' version '1.0.5-2'
+    id 'maven-publish'
+}
+
+repositories.mavenCentral()
+
+dependencies {
+    testCompile 'junit:junit:4.12'
+}
+
+group = 'ph.codeia.klee'
+version = LIBRARY_VERSION
+
+test.testLogging {
+    events 'passed', 'skipped', 'failed', 'standardOut', 'standardError'
+    exceptionFormat 'full'
+}
+
+publishing {
+    repositories.maven {
+        name 'bintray'
+        url 'https://api.bintray.com/maven/monzee/jvm/klee'
+        credentials {
+            username = BINTRAY_USER
+            password = BINTRAY_API_KEY
+        }
+    }
+
+    publications {
+        klee(MavenPublication) {
+            from components.java
+        }
+    }
+}
