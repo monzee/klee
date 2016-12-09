@@ -34,9 +34,10 @@ sealed class Rendition(val code: Int) {
 
     object RESET : Rendition(0)
 
-    // only these 3 seem to work in vte (gnome) terminals. excluded styles:
-    // faint, italic, blink{slow,fast}, conceal, crossed-out and a dozen others
+    // only these 4 seem to work in vte (gnome) terminals. excluded styles:
+    // faint, blink{slow,fast}, conceal, crossed-out and a dozen others
     object BOLD : Rendition(1)
+    object ITALIC : Rendition(3)
     object UNDERLINE : Rendition(4)
     object INVERSE : Rendition(7)
 
@@ -53,7 +54,7 @@ sealed class Rendition(val code: Int) {
         val GREEN = Color(2)
         val YELLOW = Color(3)
         val BLUE = Color(4)
-        val PURPLE = Color(5)
+        val MAGENTA = Color(5)
         val CYAN = Color(6)
         val WHITE = Color(7)
     }
